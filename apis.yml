@@ -1,7 +1,30 @@
 aid: memorick
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/memorick.png
 name: Memorick
-description: Memorick is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Memorick is a 500 Global-backed company operating a live web application at
+  memorick.com. Based on its observable application surface, it is a destination
+  photography booking platform connecting customers with photographers across
+  destinations, handling packages, orders, reviews, coupons, and messaging. The
+  product is built on Laravel (Inertia.js single-page front end) and exposes an
+  OAuth2 authorization server via Laravel Passport (authorize/token/clients/scopes
+  plus personal access tokens), Sanctum first-party session auth, and optional
+  two-factor authentication. It publishes no public API documentation, OpenAPI
+  definition, SDKs, or developer portal at this time; the /api/* routes back the
+  first-party application and are authentication-gated. This profile was enriched
+  from live probing of the public surface.
 url: https://raw.githubusercontent.com/api-evangelist/memorick/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,9 +34,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
+- Photography
+- Booking
+- Marketplace
+- Travel
+- Photographers
+- OAuth
+- Laravel
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -21,5 +51,20 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/memorick-domain-security.yml
+- type: Authentication
+  url: authentication/memorick-authentication.yml
+- type: SignUp
+  url: https://memorick.com/register
+- type: Login
+  url: https://memorick.com/login
+- type: TermsOfService
+  url: https://memorick.com/terms
 - type: Website
   url: https://memorick.com
+x-enrichment:
+  date: '2026-07-20'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v1
