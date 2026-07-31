@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://memorick.com
+notes: >-
+  Memorick publishes no OpenAPI/Swagger definition, so this profile is derived from
+  the live, observable authorization surface exposed by the application (a Laravel
+  app using Passport for OAuth2, Sanctum for first-party session auth, and Fortify
+  for two-factor). Endpoint paths were confirmed against the live host; the OAuth2
+  scope catalog is not publicly published and is therefore not enumerated here (no
+  fabrication).
+summary:
+  types:
+  - oauth2
+  - http
+  api_key_in: []
+  oauth2_flows:
+  - authorizationCode
+  - refreshToken
+  - personalAccessToken
+schemes:
+- name: OAuth2 (Laravel Passport)
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://memorick.com/oauth/authorize
+    tokenUrl: https://memorick.com/oauth/token
+  - flow: refreshToken
+    tokenUrl: https://memorick.com/oauth/token/refresh
+  endpoints:
+    authorize: https://memorick.com/oauth/authorize
+    token: https://memorick.com/oauth/token
+    token_refresh: https://memorick.com/oauth/token/refresh
+    clients: https://memorick.com/oauth/clients
+    scopes: https://memorick.com/oauth/scopes
+    personal_access_tokens: https://memorick.com/oauth/personal-access-tokens
+  sources:
+  - live-route-manifest
+- name: Personal Access Tokens
+  type: http
+  scheme: bearer
+  description: Laravel Passport personal access tokens issued from the account UI.
+  sources:
+  - live-route-manifest
+- name: Sanctum (first-party session)
+  type: http
+  scheme: cookie
+  description: >-
+    Cookie/session authentication for the first-party single-page application,
+    bootstrapped via GET /sanctum/csrf-cookie.
+  sources:
+  - live-route-manifest
+- name: Two-factor authentication (Laravel Fortify)
+  type: http
+  scheme: session
+  description: >-
+    Optional TOTP two-factor challenge (two-factor-challenge, two-factor-qr-code,
+    two-factor-recovery-codes) layered on session auth.
+  sources:
+  - live-route-manifest
