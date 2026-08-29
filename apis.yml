@@ -37,6 +37,9 @@ description: >-
   first-party application and are authentication-gated. This profile was enriched
   from live probing of the public surface.
 url: https://raw.githubusercontent.com/api-evangelist/memorick/refs/heads/main/apis.yml
+x-api-posture: no-product-api
+x-api-posture-basis: observed
+x-api-posture-note: "It publishes no public API documentation, OpenAPI definition, SDKs, or developer portal at this time; the /api/* routes back the first-party application and are authentication-gated."
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
